@@ -23,7 +23,7 @@ env:
 jobs:
   gitversion:
     name: gitversion
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -98,7 +98,7 @@ jobs:
         echo "${PR_BODY}"
         echo "::set-output name=PR_BODY::$PR_BODY"
     - name: Update PR description
-      if: ${{ github.event_name == 'pull_request' }}
+      if: ${{ github.event_name == 'pull request' }}
       run: |
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
         # from https://github.com/actions/checkout/issues/58#issuecomment-614041550
